@@ -37,7 +37,7 @@ function checkDigitsInName(name) {
 }
 const result2 = checkDigitsInName("hello3");
 // console.log(result2);
-//////////////////////////////////////////////////////
+// Problem 04 : Calculate Admission Final Score
 function calculateFinalScore(obj) {
   if (typeof obj !== "object" || Array.isArray(obj)) {
     return "Invalid Input";
@@ -60,14 +60,33 @@ function calculateFinalScore(obj) {
   if (isFFamily) {
     totalScore += 20;
   }
-  if(totalScore >= 80){
+  if (totalScore >= 80) {
     return true;
-  }else{
+  } else {
     return false;
   }
 }
 
 // SAMPLE TEST CASES
-console.log(calculateFinalScore({ name: "Rajib", testScore: 45, schoolGrade: 25, isFFamily: true }));
-// console.log(calculateFinalScore("hello"));
-// console.log(calculateFinalScore({ name: "Rajib", testScore: 15, schoolGrade: 25, isFFamily: true }));
+// console.log(calculateFinalScore({ name: "Rajib", testScore: 45, schoolGrade: 25, isFFamily: true }));
+
+// Problem 05:  Predict Avarage Waiting Time
+function waitingTime(waitingTimes, serialNumber) {
+  if (!Array.isArray(waitingTimes) || typeof serialNumber !== "number") {
+    return "Invalid Input";
+  }
+  let total = 0;
+  for (const time of waitingTimes) {
+    total += time;
+  }
+  const waitingLength = waitingTimes.length;
+  const rawAverage = total / waitingLength;
+  const average = Math.round(rawAverage);
+  const totalPerson = serialNumber - 1;
+  const person = totalPerson - waitingLength;
+  const averageTime = person * average
+  return averageTime;
+}
+
+// SAMPLE TEST CASES
+console.log(waitingTime([7, 8, 3, 4, 5], "9")); // 24

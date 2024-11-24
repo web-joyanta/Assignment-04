@@ -23,24 +23,51 @@ function sendNotification(email) {
 
 // Problem-03: Checking Digits Inside a Name
 function checkDigitsInName(name) {
-    if (typeof name !== 'string') {
-        return "Invalid Input";
+  if (typeof name !== "string") {
+    return "Invalid Input";
+  }
+  let character = false;
+  for (let i = 0; i < name.length; i++) {
+    if (name[i] >= 0 && name[i] <= 9) {
+      character = true;
+      break;
     }
-    let character = false;
-    for (let i = 0; i < name.length; i++) {
-        if (name[i] >= 0 && name[i] <= 9) {
-            character = true;
-            break;
-        }
-    }
-    return character;
+  }
+  return character;
 }
-const result2 = checkDigitsInName('hello3');
-console.log(result2);
+const result2 = checkDigitsInName("hello3");
+// console.log(result2);
+//////////////////////////////////////////////////////
+function calculateFinalScore(obj) {
+  if (typeof obj !== "object" || Array.isArray(obj)) {
+    return "Invalid Input";
+  }
+  const name = obj.name;
+  const testScore = obj.testScore;
+  const schoolGrade = obj.schoolGrade;
+  const isFFamily = obj.isFFamily;
+  let totalScore = testScore + schoolGrade;
+  if (
+    typeof name !== "string" ||
+    typeof testScore !== "number" ||
+    typeof schoolGrade !== "number" ||
+    typeof isFFamily !== "boolean" ||
+    testScore > 50 ||
+    schoolGrade > 30
+  ) {
+    return "Invalid Input";
+  }
+  if (isFFamily) {
+    totalScore += 20;
+  }
+  if(totalScore >= 80){
+    return true;
+  }else{
+    return false;
+  }
+}
 
-
-
-
-
-
-
+// SAMPLE TEST CASES
+console.log(calculateFinalScore({ name: "Rajib", testScore: 45, schoolGrade: 25, isFFamily: true }));
+// console.log(calculateFinalScore("hello"));
+// console.log(calculateFinalScore({ name: "Rajib", testScore: 15, schoolGrade: 25, isFFamily: true }));
